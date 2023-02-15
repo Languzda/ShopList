@@ -1,0 +1,24 @@
+.header {
+  width: 100%;
+  text-align: center;
+  height: 10rem;
+  padding: 2rem;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 3.2rem;
+  letter-spacing: 2px;
+}
+
+.header a:hover,
+a:active,
+a:visited,
+a:link {
+  text-decoration: none;
+  color: black;
+}
