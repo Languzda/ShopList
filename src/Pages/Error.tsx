@@ -6,7 +6,7 @@ const ErrorPage = () => {
 
   useEffect(() => {
     navigate("/");
-  }, []);
+  }, [navigate]);
 
   return <h1>Erro</h1>;
 };

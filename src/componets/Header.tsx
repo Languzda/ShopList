@@ -1,7 +1,5 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-
-import { useState } from "react";
 
 import styles from "./Header.module.css";
 import { NavigateContext } from "../store/navigate-context";

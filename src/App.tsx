@@ -2,9 +2,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import "./App.css";
 
-import AddItemForm from "./componets/AddItemForm";
-import Header from "./componets/Header";
-import ItemList from "./componets/ItemList";
 import ErrorPage from "./Pages/Error";
 import NewItemPage from "./Pages/NewItem";
 import RootLayout from "./Pages/Root";
