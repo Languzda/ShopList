@@ -11,7 +11,7 @@ const Item: React.FC<{ text: string; value: number; onDelete: () => void }> = (
     <div className={styles.item}>
       <span>{`${props.text} : ${props.value}`}</span>
 
-      <button onClick={onDeleteHandler}>Delete</button>
+      <button onClick={onDeleteHandler}>{"\u2713"}</button>
     </div>
   );
 };

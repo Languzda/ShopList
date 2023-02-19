@@ -1,26 +1,35 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import styles from "./Header.module.css";
-import { NavigateContext } from "../store/navigate-context";
+import Navigation from "./Navigation";
 
 const Header = () => {
-  const NavCtx = useContext(NavigateContext);
+  const [isShown, setIsShown] = useState(false);
 
-  const test = () => {
-    if (NavCtx.page === "/new") {
-      NavCtx.goToNewPage();
-    } else {
-      NavCtx.goToMainPAge();
-    }
+  let navigationClasses: string;
+
+  const showNavigation = () => {
+    setIsShown((prevState) => {
+      return !prevState;
+    });
   };
 
+  if (isShown) navigationClasses = styles.nav + " " + styles.open;
+  else navigationClasses = styles.nav + " " + styles.closed;
+
   return (
-    <header className={styles.header}>
-      <Link to={NavCtx.page} onClick={test}>
+    <>
+      <header className={styles.header}>
         <h1>Shopliest</h1>
-      </Link>
-    </header>
+
+        <button className={styles["btn-nav"]} onClick={showNavigation}>
+          Nav
+        </button>
+      </header>
+      <div className={navigationClasses}>
+        <Navigation onLinkClick={showNavigation} />
+      </div>
+    </>
   );
 };
 

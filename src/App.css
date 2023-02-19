@@ -21,11 +21,7 @@ html {
 }
 
 main {
-  background-color: darkcyan;
-  overflow: hidden;
-  max-width: 60rem;
-}
-
-footer {
-  justify-self: flex-start;
+  /* overflow: hidden; */
+  width: 100%;
+  /* max-width: 60rem; */
 }
