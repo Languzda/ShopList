@@ -6,8 +6,9 @@
 
   display: flex;
 
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  background-color: burlywood;
 }
 
 .header h1 {
@@ -21,4 +22,41 @@ a:visited,
 a:link {
   text-decoration: none;
   color: black;
+}
+
+.btn-nav {
+  z-index: 9999;
+  cursor: pointer;
+  display: block;
+  border: none;
+  background: none;
+
+  box-shadow: 8px 9px 13px 0px rgba(66, 68, 90, 1);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 5px;
+}
+
+.nav {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  transition: all 0.5s ease-out;
+
+  opacity: 0.6;
+
+  display: flex;
+  justify-content: center;
+}
+
+.open {
+  transform: translateX(0);
+  background-color: aquamarine;
+}
+
+.closed {
+  transform: translateX(-100%);
 }

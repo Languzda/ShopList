@@ -3,14 +3,12 @@ import { ShopContext } from "../store/shop-context";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./AddItemForm.module.css";
-import { NavigateContext } from "../store/navigate-context";
 
 const AddItemForm = () => {
   const ItemTextInputRef = useRef<HTMLInputElement>(null);
   const ItemValueInputRef = useRef<HTMLInputElement>(null);
 
   const ShopCtx = useContext(ShopContext);
-  const NavCtx = useContext(NavigateContext);
 
   const navigate = useNavigate();
 
@@ -29,7 +27,6 @@ const AddItemForm = () => {
     }
 
     ShopCtx.addItem(enteredText, enteredValue);
-    NavCtx.goToMainPAge();
 
     navigate("/");
   };
