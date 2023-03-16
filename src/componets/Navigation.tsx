@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import styles from "./Navigation.module.css";
+import styles from "./Navigation.module.scss";
 
 const Navigation: React.FC<{ onLinkClick: () => void }> = (props) => {
   return (

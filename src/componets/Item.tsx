@@ -1,4 +1,4 @@
-import styles from "./Item.module.css";
+import styles from "./Item.module.scss";
 
 const Item: React.FC<{ text: string; value: number; onDelete: () => void }> = (
   props

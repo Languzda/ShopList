@@ -2,7 +2,7 @@ import { useContext, useRef } from "react";
 import { ShopContext } from "../store/shop-context";
 import { useNavigate } from "react-router-dom";
 
-import styles from "./AddItemForm.module.css";
+import styles from "./AddItemForm.module.scss";
 
 const AddItemForm = () => {
   const ItemTextInputRef = useRef<HTMLInputElement>(null);

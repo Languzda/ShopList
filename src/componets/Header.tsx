@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 import Navigation from "./Navigation";
 
 const Header = () => {

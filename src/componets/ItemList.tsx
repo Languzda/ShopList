@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Item from "./Item";
 
-import styles from "./ItemList.module.css";
+import styles from "./ItemList.module.scss";
 
 const ItemList: React.FC = () => {
   const ShopCtx = useContext(ShopContext);
