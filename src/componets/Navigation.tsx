@@ -7,12 +7,12 @@ const Navigation: React.FC<{ onLinkClick: () => void }> = (props) => {
     <ul className={styles.navList}>
       <li>
         <Link to="/" onClick={props.onLinkClick}>
-          Shop List
+          Lista Zakupów
         </Link>
       </li>
       <li>
         <Link to="/new" onClick={props.onLinkClick}>
-          Add Item
+          Dodaj Produkt
         </Link>
       </li>
     </ul>
