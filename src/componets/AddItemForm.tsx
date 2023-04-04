@@ -1,53 +1,56 @@
-import { useContext, useRef } from "react";
+import { useContext, useState } from "react";
 import { ShopContext } from "../store/shop-context";
-import { useNavigate } from "react-router-dom";
 
 import styles from "./AddItemForm.module.scss";
 
 const AddItemForm = () => {
-  const ItemTextInputRef = useRef<HTMLInputElement>(null);
-  const ItemValueInputRef = useRef<HTMLInputElement>(null);
+  const [enteredProduct, setEnteredProduct] = useState<string>("");
+  const [enteredQuantity, setEnteredQuantity] = useState<number>(1);
 
   const ShopCtx = useContext(ShopContext);
 
-  const navigate = useNavigate();
+  const onProductChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEnteredProduct(event.target.value);
+  };
+
+  const onQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEnteredQuantity(+event.target.value);
+  };
 
   const onSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    const enteredText = ItemTextInputRef.current!.value;
-    const enteredValue = Math.floor(+ItemValueInputRef.current!.value);
-
-    if (enteredText.trim().length === 0) {
+    if (enteredProduct.trim().length === 0) {
       return;
     }
 
-    if (enteredValue < 0 || enteredValue > 99) {
+    if (enteredQuantity < 0 || enteredQuantity > 99) {
       return;
     }
 
-    ShopCtx.addItem(enteredText, enteredValue);
+    ShopCtx.addItem(enteredProduct, enteredQuantity);
 
-    navigate("/");
+    setEnteredProduct("");
+    setEnteredQuantity(1);
+
+    // TODO: Add a modal instead of alert
+    window.alert("Dodano produkt do listy zakupów!");
   };
 
   return (
     <form className={styles.form} onSubmit={onSubmit}>
-      <div>
-        <label>Product Name:</label>
-        <input type="text" name="text" required ref={ItemTextInputRef} />
-        <label>Product Value:</label>
-        <input
-          type="number"
-          name="text"
-          min={1}
-          max={99}
-          defaultValue={1}
-          required
-          ref={ItemValueInputRef}
-        />
-      </div>
-      <button type="submit">Add Item</button>
+      <label>Produkt:</label>
+      <input type="text" value={enteredProduct} onChange={onProductChange} />
+      <label>Ilość:</label>
+      <input
+        type="number"
+        min={1}
+        max={99}
+        value={enteredQuantity}
+        onChange={onQuantityChange}
+      />
+
+      <button type="submit">Dodaj</button>
     </form>
   );
 };
