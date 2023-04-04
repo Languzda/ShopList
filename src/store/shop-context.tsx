@@ -10,8 +10,10 @@ const dataParsed =
 let ShopItems: ShopItem[];
 
 if (dataParsed) {
-  // @ts-ignore
-  ShopItems = dataParsed.map((d) => new ShopItem(d.name, d.value));
+  ShopItems = dataParsed.map(
+    (dataItem: { name: string; value: number }) =>
+      new ShopItem(dataItem.name, dataItem.value)
+  );
 } else {
   ShopItems = [];
 }
