@@ -49,9 +49,9 @@ const LoginForm = () => {
     let url: string;
 
     if (isSignedIn) {
-      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.FIREBASE_AUTH_API_KEY}`;
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_AUTH_API_KEY}`;
     } else {
-      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.FIREBASE_AUTH_API_KEY}`;
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_AUTH_API_KEY}`;
     }
 
     handleSignIn(url, user);
@@ -62,7 +62,6 @@ const LoginForm = () => {
 
   const handleSwitch = () => {
     setIsSignedIn(!isSignedIn);
-    console.log(process.env.FIREBASE_AUTH_API_KEY);
   };
 
   return (
@@ -74,7 +73,6 @@ const LoginForm = () => {
           {isSignedIn ? "Zarejestruj się" : "Zaloguj się"}
         </button>
         <button type="button" onClick={handleSwitch}>
-          {" "}
           {isSignedIn ? "Zaloguj się" : "Zarejestruj się"}
         </button>
       </form>
