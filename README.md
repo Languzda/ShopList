@@ -3,7 +3,7 @@
 # In progress
 
 <ul>
-  <li> Sign up & Sign in (firebase) </li>
+  <li> Store records in firestore </li>
 </ul>
 
 # Todo
