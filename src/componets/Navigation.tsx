@@ -15,6 +15,11 @@ const Navigation: React.FC<{ onLinkClick: () => void }> = (props) => {
           Dodaj Produkt
         </Link>
       </li>
+      <li>
+        <Link to="/signin" onClick={props.onLinkClick}>
+          Zaloguj
+        </Link>
+      </li>
     </ul>
   );
 };
