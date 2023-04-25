@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 
 import styles from "./Navigation.module.scss";
+import { useSelector } from "react-redux";
 
 const Navigation: React.FC<{ onLinkClick: () => void }> = (props) => {
+  const isLogged = useSelector((state: any) => state.state.isLogged);
   return (
     <ul className={styles.navList}>
       <li>
@@ -17,7 +19,7 @@ const Navigation: React.FC<{ onLinkClick: () => void }> = (props) => {
       </li>
       <li>
         <Link to="/signin" onClick={props.onLinkClick}>
-          Zaloguj
+          {isLogged ? "Wyloguj" : "Zaloguj"}
         </Link>
       </li>
     </ul>

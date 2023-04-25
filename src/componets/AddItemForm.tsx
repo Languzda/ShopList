@@ -1,5 +1,8 @@
-import { useContext, useState } from "react";
-import { ShopContext } from "../store/shop-context";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { stateActions } from "../store/state-slice";
+import { databaseType, ShopItem } from "../models/types";
+import { sendListData } from "../store/listActions";
 
 import styles from "./AddItemForm.module.scss";
 
@@ -7,7 +10,11 @@ const AddItemForm = () => {
   const [enteredProduct, setEnteredProduct] = useState<string>("");
   const [enteredQuantity, setEnteredQuantity] = useState<number>(1);
 
-  const ShopCtx = useContext(ShopContext);
+  const dispatch = useDispatch();
+
+  const isLogged = useSelector((state: any) => state.state.isLogged);
+  const items = useSelector((state: any) => state.state.items);
+  const user = useSelector((state: any) => state.state.user);
 
   const onProductChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredProduct(event.target.value);
@@ -28,7 +35,28 @@ const AddItemForm = () => {
       return;
     }
 
-    ShopCtx.addItem(enteredProduct, enteredQuantity);
+    const newItem: ShopItem = {
+      name: enteredProduct,
+      value: enteredQuantity,
+      id: Math.random().toString(),
+    };
+
+    dispatch(stateActions.addItem(newItem));
+
+    if (isLogged) {
+      if (user?.uid) {
+        const userId = user.uid;
+
+        const dataToSend: databaseType = {
+          items: [...items, newItem],
+          uid: userId,
+        };
+        // @ts-ignore
+        dispatch(sendListData(dataToSend));
+      } else {
+        console.log("handle error");
+      }
+    }
 
     setEnteredProduct("");
     setEnteredQuantity(1);

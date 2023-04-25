@@ -12,7 +12,7 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  databaseURL: process.env.REACT_APP_DB_URL,
 };
 
 // Initialize Firebase
@@ -21,7 +21,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getDatabase(app);
 
-connectAuthEmulator(auth, "http://localhost:9099");
-connectDatabaseEmulator(db, "localhost", 9000);
+// connectAuthEmulator(auth, "http://localhost:9099");
+// connectDatabaseEmulator(db, "localhost", 9000);
 
 export default app;
