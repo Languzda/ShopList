@@ -3,7 +3,6 @@ import "./index.scss";
 import { Provider } from "react-redux";
 
 import App from "./App";
-import ShopContextProvider from "./store/shop-context";
 import store from "./store";
 
 const root = ReactDOM.createRoot(
@@ -12,8 +11,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider store={store}>
-    <ShopContextProvider>
-      <App />
-    </ShopContextProvider>
+    <App />
   </Provider>
 );
