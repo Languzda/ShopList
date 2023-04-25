@@ -4,7 +4,7 @@ import { useSelector } from "react-redux/es/exports";
 import { FirebaseAuth } from "../firebase/firebaseAuthUi";
 
 const LoginForm = () => {
-  const isLoggedIn = useSelector((state: any) => state.auth.isLogged);
+  const isLoggedIn = useSelector((state: any) => state.state.isLogged);
 
   const singOutHandler = async () => {
     signOut(auth);

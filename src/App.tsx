@@ -11,7 +11,7 @@ import LoginPage from "./Pages/Login";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/init";
 import { useDispatch } from "react-redux";
-import { authActions } from "./store/auth-slice";
+import { stateActions } from "./store/state-slice";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,11 +28,11 @@ function App() {
           uid: user.uid,
           displayName: user.displayName,
         };
-        dispatch(authActions.login(payload));
+        dispatch(stateActions.login(payload));
       }
       // Action to display auth error
     } else {
-      dispatch(authActions.logout());
+      dispatch(stateActions.logout());
     }
   });
 
