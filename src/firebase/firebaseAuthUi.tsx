@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import * as firebaseui from "firebaseui";
 import { auth } from "./init";
-import { EmailAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { EmailAuthProvider } from "firebase/auth";
 import "firebaseui/dist/firebaseui.css";
 
 export const FirebaseAuth = () => {
