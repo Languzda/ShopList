@@ -9,19 +9,3 @@
 html {
   font-size: 62.5%;
 }
-
-.App {
-  text-align: center;
-  min-height: 100vh;
-  max-width: 100vw;
-  background-color: $color-theme;
-
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  /* overflow: hidden; */
-  width: 100%;
-  /* max-width: 60rem; */
-}

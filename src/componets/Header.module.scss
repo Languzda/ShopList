@@ -16,14 +16,6 @@
     font-size: 3.2rem;
     letter-spacing: 2px;
   }
-
-  a:hover,
-  a:active,
-  a:visited,
-  a:link {
-    text-decoration: none;
-    color: black;
-  }
 }
 
 .btn-nav {
@@ -46,9 +38,7 @@
   top: 0;
   left: 0;
   z-index: 9;
-  transition: all 0.5s ease-out;
-
-  opacity: 0.6;
+  transition: all 0.4s ease-out;
 
   display: flex;
   justify-content: center;
@@ -56,9 +46,9 @@
 
 .open {
   transform: translateX(0);
-  background-color: aquamarine;
+  background-color: rgba($color-primary, 0.9);
 }
 
 .closed {
-  transform: translateX(-100%);
+  transform: translateX(100%);
 }

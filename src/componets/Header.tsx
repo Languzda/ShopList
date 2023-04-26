@@ -23,7 +23,7 @@ const Header = () => {
         <h1>Shopliest</h1>
 
         <button className={styles["btn-nav"]} onClick={showNavigation}>
-          Nav
+          Naw
         </button>
       </header>
       <div className={navigationClasses}>
