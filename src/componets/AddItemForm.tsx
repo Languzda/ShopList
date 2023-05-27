@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { stateActions } from "../store/state-slice";
 import { databaseType, ShopItem } from "../models/types";
 import { sendListData } from "../store/listActions";
+import { strings } from "../store/strings";
+import { uiActions } from "../store/ui-slice";
 
 import styles from "./AddItemForm.module.scss";
 
@@ -15,6 +17,9 @@ const AddItemForm = () => {
   const isLogged = useSelector((state: any) => state.state.isLogged);
   const items = useSelector((state: any) => state.state.items);
   const user = useSelector((state: any) => state.state.user);
+  const language = useSelector((state: any) => state.ui.language);
+
+  const text = language === "pl" ? strings.pl : strings.en;
 
   const onProductChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEnteredProduct(event.target.value);
@@ -28,10 +33,18 @@ const AddItemForm = () => {
     event.preventDefault();
 
     if (enteredProduct.trim().length === 0) {
+      dispatch(uiActions.showError(text.addFaultName));
+      setTimeout(() => {
+        dispatch(uiActions.hideMessage());
+      }, 2000);
       return;
     }
 
-    if (enteredQuantity < 0 || enteredQuantity > 99) {
+    if (enteredQuantity < 1 || enteredQuantity > 100) {
+      dispatch(uiActions.showError(text.addFaultQuantity));
+      setTimeout(() => {
+        dispatch(uiActions.hideMessage());
+      }, 2000);
       return;
     }
 
@@ -54,7 +67,10 @@ const AddItemForm = () => {
         // @ts-ignore
         dispatch(sendListData(dataToSend));
       } else {
-        console.log("handle error");
+        dispatch(uiActions.showError("User not logged in"));
+        setTimeout(() => {
+          dispatch(uiActions.hideMessage());
+        }, 2000);
       }
     }
 
@@ -62,23 +78,24 @@ const AddItemForm = () => {
     setEnteredQuantity(1);
 
     // TODO: Add a modal instead of alert
-    window.alert("Dodano produkt do listy zakupów!");
+    dispatch(uiActions.showMessage(text.addedSuccessfully));
+    setTimeout(() => {
+      dispatch(uiActions.hideMessage());
+    }, 2000);
   };
 
   return (
     <form className={styles.form} onSubmit={onSubmit}>
-      <label>Produkt:</label>
+      <label>{text.Product}</label>
       <input type="text" value={enteredProduct} onChange={onProductChange} />
-      <label>Ilość:</label>
+      <label>{text.quantity}</label>
       <input
         type="number"
-        min={1}
-        max={99}
         value={enteredQuantity}
         onChange={onQuantityChange}
       />
 
-      <button type="submit">Dodaj</button>
+      <button type="submit">{text.add}</button>
     </form>
   );
 };

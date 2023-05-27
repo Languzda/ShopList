@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./Header.module.scss";
 import Navigation from "./Navigation";
@@ -20,7 +21,9 @@ const Header = () => {
   return (
     <>
       <header className={styles.header}>
-        <h1>Shopliest</h1>
+        <Link to="/">
+          <h1>Shopliest</h1>
+        </Link>
 
         <button className={styles["btn-nav"]} onClick={showNavigation}>
           Naw

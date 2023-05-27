@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import styles from "./Root.module.scss";
 
 import Header from "../componets/Header";
+import Modal from "../componets/Modal";
 
 const RootLayout = () => {
   return (
@@ -12,6 +13,7 @@ const RootLayout = () => {
       <main className={styles.main}>
         <Outlet />
       </main>
+      <Modal />
     </div>
   );
 };

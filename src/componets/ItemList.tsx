@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { stateActions } from "../store/state-slice";
 import { userType, databaseType, ShopItem } from "../models/types";
 import { sendListData } from "../store/listActions";
+import { strings } from "../store/strings";
 
 import Item from "./Item";
 
@@ -13,6 +14,9 @@ const ItemList: React.FC = () => {
   const itemList: ShopItem[] = useSelector((state: any) => state.state.items);
   const isLogged = useSelector((state: any) => state.state.isLogged);
   const user: userType = useSelector((state: any) => state.state.user);
+  const language = useSelector((state: any) => state.ui.language);
+
+  const text = language === "pl" ? strings.pl : strings.en;
 
   const onRemoveItem = (id: string) => {
     if (isLogged) {
@@ -45,7 +49,7 @@ const ItemList: React.FC = () => {
 
       {itemList.length === 0 && (
         <Link to="new">
-          <h2>Add your items</h2>
+          <div className={styles["add--item"]}>{text.addYourProduct}</div>
         </Link>
       )}
     </>
